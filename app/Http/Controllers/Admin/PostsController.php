@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Category;
+use Illuminate\Support\Str;
 
 class PostsController extends Controller
 {
@@ -28,7 +29,6 @@ class PostsController extends Controller
     {
         $newPost = new Post();
 
-
         if( $request->hasFile('featured') ) {
             $file = $request->file('featured');
             $destinationPath = 'images/featureds/';
@@ -36,7 +36,6 @@ class PostsController extends Controller
             $uploadSuccess = $request->file('featured')->move($destinationPath, $filename);
             $newPost->featured = $destinationPath . $filename;
         }
-
 
         $newPost->title = $request->title;
         $newPost->category_id = $request->category_id;
@@ -56,6 +55,7 @@ class PostsController extends Controller
         $post->category_id = $request->category_id;
         $post->content = $request->content;
         $post->author = $request->author;
+        $post->slug = Str::slug($request->title, '-');
 
         if( $request->hasFile('featured') ) {
             $file = $request->file('featured');

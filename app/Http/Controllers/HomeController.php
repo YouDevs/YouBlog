@@ -33,10 +33,10 @@ class HomeController extends Controller
         ]);
     }
 
-    public function post($postId)
+    public function post($post)
     {
         // Obtener post
-        $post = Post::find($postId);
+        $post = Post::where('slug', '=' , $post)->first();
         $latestPosts = Post::orderBy('id', 'DESC')->take(3)->get();
         return view('post', [
             'post' => $post,
