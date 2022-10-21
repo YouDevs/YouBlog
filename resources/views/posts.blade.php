@@ -48,7 +48,7 @@
                                 <div class="d-card-text">
                                     {{$post->content}}
                                 </div>
-                                <a href="{{route('post', $post->slug)}}" class="post-link"><b>Leer más</b></a>
+                                <a href="{{route('post', $post->slug)}}" class="post-link"><b>Leer más {{$post->slug}}</b></a>
                                 <hr>
                                 <div class="row">
                                     <div class="col-6 text-left">

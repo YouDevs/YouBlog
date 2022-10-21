@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/posts/{category}', 'HomeController@postsByCategory')->name('posts.category');
 Route::get('/post/{post}', 'HomeController@post')->name('post');
+// L v8
+// Route::get('/post/{post}', [HomeController::class, 'post'])->name('post');
 
 Route::get('/home', function(){
     return view('home');
